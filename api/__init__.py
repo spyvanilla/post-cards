@@ -21,6 +21,8 @@ def create_app():
     db.init_app(app)
     CORS(app)
 
+    from .models import Question
+
     with app.app_context():
         db.create_all()
 
