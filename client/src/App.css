@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: rgb(226, 226, 209);
+}

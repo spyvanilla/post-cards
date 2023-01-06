@@ -1,0 +1,110 @@
+#post-cards-title-card-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 220px;
+    flex-direction: column;
+}
+
+#post-cards-title-card-center div {
+    height: 300px;
+    position: relative;
+}
+
+.title-card {
+    width: 200px;
+    height: 300px;
+    background-color: rgb(224, 224, 22);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#title-card-2 {
+    top: -300px;
+    animation: cardAnimation 1s;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+}
+
+#post-cards-title {
+    opacity: 0;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+    font-size: 50px;
+    color: #000;
+    animation: titleAppear 700ms;
+    animation-delay: 200ms;
+    animation-fill-mode: forwards;
+}
+
+#post-cards-description {
+    opacity: 0;
+    text-align: center;
+    animation: titleAppear 700ms;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+}
+
+#get-started-button {
+    opacity: 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(224, 224, 22);
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+    transition: linear 0.2s;
+    animation: buttonAppear 700ms;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+}
+
+#get-started-button:hover {
+    scale: 1.1;
+}
+
+#post-cards-question-submit-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#question-submit-title {
+    font-family: 'Caveat', cursive;
+    font-size: 50px;
+}
+
+@keyframes cardAnimation {
+    100% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes titleAppear {
+    0% {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonAppear {
+    0% {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+}
