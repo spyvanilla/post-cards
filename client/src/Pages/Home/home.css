@@ -5,6 +5,7 @@
     margin-top: 50px;
     margin-bottom: 220px;
     flex-direction: column;
+    gap: 30px;
 }
 
 #post-cards-title-card-center div {

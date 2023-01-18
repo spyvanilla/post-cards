@@ -27,7 +27,9 @@ def create_app():
         db.create_all()
 
     from .questions import questions
+    from .auth import auth
 
     app.register_blueprint(questions, url_prefix='/api')
+    app.register_blueprint(auth, url_prefix='/api')
 
     return app
