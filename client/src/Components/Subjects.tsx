@@ -2,6 +2,9 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBook, faChevronDown} from '@fortawesome/free-solid-svg-icons';
+
 function Subjects() {
     const [availableSubjects, setAvailableSubjects] = useState<any>([]);
     const [selectedSubject, setSelectedSubject] = useState('');
@@ -45,19 +48,24 @@ function Subjects() {
         {loading === true ? <></> : (
             <>
             {availableSubjects.length === 0 ? <></> : (
-                <section>
-                    <h2>Answer your questions</h2>
-                    <label htmlFor="subject">Select a subject</label>
-                    <select name="subject" id="subject" value={selectedSubject} onChange={(event) => setSelectedSubject(event.target.value)}>
-                    {availableSubjects.map((subject: any, index: number) => {
-                        return (
-                            <option value={subject.subject} key={index}>{subject.subject.charAt(0).toUpperCase() + subject.subject.slice(1)}</option>
-                        )
-                    })}
-                    </select>
+                <>
+                <h2 className="profile-description">Answer your questions</h2>
+                <section className="question-submit-card" style={{alignItems: "center"}}>
+                    <label htmlFor="subject">Select a subject <FontAwesomeIcon icon={faBook} /></label>
+                    <div>
+                        <select name="subject" id="subject" value={selectedSubject} onChange={(event) => setSelectedSubject(event.target.value)}>
+                        {availableSubjects.map((subject: any, index: number) => {
+                            return (
+                                <option value={subject.subject} key={index}>{subject.subject.charAt(0).toUpperCase() + subject.subject.slice(1)}</option>
+                            )
+                        })}
+                        </select>
+                        <FontAwesomeIcon icon={faChevronDown} id="select-icon" />
+                    </div>
                     <button onClick={startGame}>Start</button>
                     <button onClick={editQuestions}>Edit questions</button>
                 </section>
+                </>
             )}
             </>
         )}

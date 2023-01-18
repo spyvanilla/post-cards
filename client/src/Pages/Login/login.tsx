@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSignature, faLock} from '@fortawesome/free-solid-svg-icons';
 import {ToastContainer} from 'react-toastify';
 
-function Login() {
+function Login({setIsLogged} : {setIsLogged: React.Dispatch<React.SetStateAction<boolean>>}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ function Login() {
                 <div className="register-title-card" id="register-title-card-1"></div>
                 <div className="register-title-card" id="register-title-card-2"></div>
             </div>
-            <form id="register-form" onSubmit={(event) => loginUser(event, username, password, navigate)}>
+            <form id="register-form" onSubmit={(event) => loginUser(event, username, password, setIsLogged, navigate)}>
                 <label htmlFor="username">Your username <FontAwesomeIcon icon={faSignature} /></label>
                 <input type="text" id="username" placeholder="Your username" value={username} onChange={(event) => setUsername(event.target.value)} maxLength={20} required></input>
                 <label htmlFor="password">Your password <FontAwesomeIcon icon={faLock} /></label>

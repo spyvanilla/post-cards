@@ -2,7 +2,7 @@ import {NavigateFunction} from 'react-router-dom';
 
 import {toast} from 'react-toastify';
 
-const loginUser = (event: React.FormEvent<HTMLFormElement>, username: string, password: string, navigate: NavigateFunction) => {
+const loginUser = (event: React.FormEvent<HTMLFormElement>, username: string, password: string, setIsLogged: React.Dispatch<React.SetStateAction<boolean>>, navigate: NavigateFunction) => {
     event.preventDefault();
 
     fetch('/api/login', {
@@ -15,6 +15,7 @@ const loginUser = (event: React.FormEvent<HTMLFormElement>, username: string, pa
     .then(response => response.json())
     .then(response => {
         if (response.auth) {
+            setIsLogged(true);
             return navigate('/profile');
         }
 

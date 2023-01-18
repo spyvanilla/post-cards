@@ -27,8 +27,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home isLogged={isLogged} />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/profile" element={<Profile isLogged={isLogged} />}></Route>
+          <Route path="/login" element={<Login setIsLogged={setIsLogged} />}></Route>
+          <Route path="/profile" element={<Profile isLogged={isLogged} setIsLogged={setIsLogged} />}></Route>
           <Route path="/questions/:subject" element={<Questions />}></Route>
           <Route path="/edit-questions/:subject" element={<EditQuestions />}></Route>
           <Route path="/edit-questions/:subject/:id" element={<EditQuestion />}></Route>
