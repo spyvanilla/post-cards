@@ -1,0 +1,91 @@
+#profile-center {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#profile-title {
+    opacity: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 50px;
+    text-align: center;
+    animation: cardAppear 1s;
+    animation-fill-mode: forwards;
+}
+
+#profile-title-card-center {
+    position: relative;
+    transform: translateY(20px);
+    height: 80px;
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+.profile-title-card {
+    width: 50px;
+    height: 80px;
+    background-color: rgb(224, 224, 22);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#profile-title-card-2 {
+    transform: translateY(-80px);
+    animation: registerCardAnimation 1s;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+}
+
+#profile-description {
+    opacity: 0;
+    font-size: 20px;
+    text-align: center;
+    animation: titleAppear 1s;
+    animation-delay: 400ms;
+    animation-fill-mode: forwards;
+}
+
+#question-submit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#question-submit-card input {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#question-submit-card textarea {
+    border-radius: 10px;
+    border: 1px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+}
+
+#question-submit-card button {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(224, 224, 22);
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    transition: linear 0.1s;
+}
+
+#question-submit-card button:hover {
+    scale: 1.1;
+}

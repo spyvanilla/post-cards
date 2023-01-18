@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {SyntheticEvent} from 'react';
 import {useNavigate} from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import Subjects from '../../Components/Subjects';
 
 import './home.css';
 
-function Home() {
+function Home(isLogged : {isLogged: boolean}) {
     const [question, setQuestion] = useState('');
     const [subject, setSubject] = useState('');
     const [answer, setAnswer] = useState('');
@@ -34,6 +34,12 @@ function Home() {
         })
         .then(() => setUnloadSubjectsComponent(false));
     };
+
+    useEffect(() => {
+        if (!isLogged) {
+            return navigate('/profile');
+        }
+    }, [isLogged, navigate])
 
     return (
         <>
