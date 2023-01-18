@@ -21,7 +21,7 @@
 }
 
 #title-card-2 {
-    top: -300px;
+    transform: translateY(-300px);
     animation: cardAnimation 1s;
     animation-delay: 400ms;
     animation-fill-mode: forwards;
@@ -55,7 +55,7 @@
     font-size: 20px;
     width: 200px;
     height: 50px;
-    transition: linear 0.2s;
+    transition: linear 0.1s;
     animation: buttonAppear 700ms;
     animation-delay: 400ms;
     animation-fill-mode: forwards;
@@ -77,9 +77,50 @@
     font-size: 50px;
 }
 
+#question-submit-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+    height: 500px;
+    background-color: rgb(224, 224, 22);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+#question-submit-subject {
+    border: 1px solid #000;
+    background-color: #fff;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.question-submit-textarea {
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+#question-submit-button {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(235, 131, 13);
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+    transition: linear 0.1s;
+}
+
+#question-submit-button:hover {
+    scale: 1.1;
+}
+
 @keyframes cardAnimation {
     100% {
-        transform: rotate(20deg);
+        transform: rotate(20deg) translateY(-300px);
     }
 }
 
