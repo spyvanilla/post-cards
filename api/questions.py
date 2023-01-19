@@ -68,12 +68,31 @@ def get_question_by_id(id: int):
 @cross_origin()
 def edit_question(id: int):
     data = json.loads(request.data)
+    subject = data['subject']
     question = data['question']
     answer = data['answer']
 
     edited_question = Question.query.filter_by(id=id).first()
-    edited_question.question = question
-    edited_question.answer = answer
-    
-    db.session.commit()
-    return {'edit': True}
+
+    if edited_question:
+        if edited_question.user_id != current_user.id:
+            return {'edit': False}
+
+        edited_question.subject = subject
+        edited_question.question = question
+        edited_question.answer = answer
+        
+        db.session.commit()
+        return {'edit': True}
+
+@questions.route('/delete-question/<int:id>', methods=['DELETE'], endpoint='delete_question')
+def delete_question(id: int):
+    question = Question.query.filter_by(id=id).first()
+
+    if question:
+        if question.user_id != current_user.id:
+            return {'delete': False}
+
+        db.session.delete(question)
+        db.session.commit()
+        return {'delete': True}

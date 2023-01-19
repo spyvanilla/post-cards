@@ -54,7 +54,7 @@ function Questions() {
     return (
         <>
         {loading === true ? '' : (
-            <div id="questions-card">
+            <div className="questions-card">
                 <h4><FontAwesomeIcon icon={faBook} /> {subject}</h4>
                 {showAnswer === false ? (
                     <>

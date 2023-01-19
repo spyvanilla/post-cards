@@ -1,7 +1,9 @@
-#log-out-button {
+.log-out-button {
     border: none;
+    color: #000;
     background-color: transparent;
     cursor: pointer;
+    font-size: 12px;
     padding: 10px;
 }
 

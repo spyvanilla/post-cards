@@ -1,6 +1,9 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {useNavigate, useParams, Link} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
+
+import Loading from '../../Components/Loading';
+import QuestionCardEdit from '../../Components/QuestionCardEdit';
 
 function EditQuestions() {
     const [questions, setQuestions] = useState<any>([]);
@@ -12,7 +15,7 @@ function EditQuestions() {
         fetch(`/api/get-questions-from-subject/${subject}`)
         .then(response => response.json())
         .then(data => {
-            if (data.length === 0) return navigate('/');
+            if (data.length === 0) return navigate('/profile');
 
             setQuestions(data);
             setLoading(false);
@@ -21,17 +24,11 @@ function EditQuestions() {
 
     return (
         <>
-        {loading === true ? '' : (
+        {loading === true ? <Loading type={1} /> : (
             <>
-            <Link to="/profile">Back to home</Link>
+            <button onClick={() => navigate('/profile')} className="log-out-button">Back to home</button>
             {questions.map((currentQuestion: any, index: number) => {
-                return (
-                    <div key={index}>
-                        <h2 style={{whiteSpace: "pre-wrap"}}>{currentQuestion.question}</h2>
-                        <h3>{currentQuestion.answer}</h3>
-                        <Link to={`/edit-questions/${subject}/${currentQuestion.id}`}>Edit</Link>
-                    </div>
-                )
+                return <QuestionCardEdit index={index} subject={subject} currentQuestion={currentQuestion} setLoading={setLoading} />
             })}
             </>
         )}

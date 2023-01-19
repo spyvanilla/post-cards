@@ -49,7 +49,7 @@ function Profile({isLogged, setIsLogged} : {isLogged: boolean, setIsLogged: Reac
         <>
         {loading === true ? <Loading type={1} /> : (
             <>
-            <button id="log-out-button" onClick={onClick}>Log out</button>
+            <button className="log-out-button" onClick={onClick}>Log out</button>
             <div id="profile-center">
                 <h1 id="profile-title">Hi, {username}!</h1>
                 <h2 className="profile-description" style={{marginBottom: "25px"}}>Submit a question</h2>
