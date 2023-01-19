@@ -3,6 +3,11 @@ import {useState, useEffect} from 'react';
 import {SyntheticEvent} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBook, faCheck} from '@fortawesome/free-solid-svg-icons';
+
+import './questions.css';
+
 function Questions() {
     const [questions, setQuestions] = useState<any>([]);
     const [currentQuestion, setCurrentQuestion] = useState<any>(null);
@@ -31,12 +36,12 @@ function Questions() {
     }
 
     useEffect(() => {
-        if (redirect) return navigate('/');
+        if (redirect) return navigate('/profile');
 
         fetch(`/api/get-questions-from-subject/${subject}`)
         .then(response => response.json())
         .then(data => {
-            if (data.length === 0) return navigate('/');
+            if (data.length === 0) return navigate('/profile');
 
             let currentQuestions = data;
             setCurrentQuestion(currentQuestions[0]);
@@ -49,15 +54,18 @@ function Questions() {
     return (
         <>
         {loading === true ? '' : (
-            <div>
-                <h2 style={{whiteSpace: "pre-wrap"}}>{currentQuestion.question}</h2>
+            <div id="questions-card">
+                <h4><FontAwesomeIcon icon={faBook} /> {subject}</h4>
                 {showAnswer === false ? (
+                    <>
+                    <h2>{currentQuestion.question}</h2>
                     <form onSubmit={handleSubmit}>
-                        <input type="submit" value="Show answer"></input>
+                        <button type="submit">Show answer</button>
                     </form>
+                    </>
                 ) : (
                     <>
-                    <h3>The answer is: {currentQuestion.answer}</h3>
+                    <h3 style={{whiteSpace: "pre-wrap"}}><FontAwesomeIcon icon={faCheck} style={{color: "green"}} /> {currentQuestion.answer}</h3>
                     <button onClick={changeCurrentQuestion}>Continue</button>
                     </>
                 )}

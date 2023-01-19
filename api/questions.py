@@ -2,6 +2,7 @@ import json
 from random import sample
 
 from flask import Blueprint, request, jsonify
+from flask_login import current_user
 from flask_cors import cross_origin
 
 from . import db
@@ -27,7 +28,7 @@ def submit_question():
     subject = data['subject']
     answer = data['answer']
 
-    new_question = Question(question=question, subject=subject, answer=answer)
+    new_question = Question(user_id=current_user.id, question=question, subject=subject, answer=answer)
     db.session.add(new_question)
     db.session.commit()
     return {'submit': True}
@@ -35,7 +36,7 @@ def submit_question():
 @questions.route('/get-subjects', endpoint='get_subjects')
 @cross_origin()
 def get_subjects():
-    questions = Question.query.all()
+    questions = Question.query.filter_by(user_id=current_user.id).all()
 
     if questions:
         subjects = set([question.subject for question in questions])
@@ -45,7 +46,7 @@ def get_subjects():
 @questions.route('/get-questions-from-subject/<subject>', endpoint='get_questions_from_subject')
 @cross_origin()
 def get_questions_from_subject(subject: str):
-    questions = Question.query.filter_by(subject=subject).all()
+    questions = Question.query.filter_by(user_id=current_user.id, subject=subject).all()
 
     if questions:
         return jsonify([*map(serialize_questions, sample(questions, len(questions)))])
@@ -54,7 +55,7 @@ def get_questions_from_subject(subject: str):
 @questions.route('/get-question-by-id/<int:id>', endpoint='get_question_by_id')
 @cross_origin()
 def get_question_by_id(id: int):
-    question = Question.query.filter_by(id=id).first()
+    question = Question.query.filter_by(id=id, user_id=current_user.id).first()
 
     if question:
         return {

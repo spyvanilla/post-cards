@@ -23,7 +23,7 @@ function EditQuestions() {
         <>
         {loading === true ? '' : (
             <>
-            <Link to="/">Back to home</Link>
+            <Link to="/profile">Back to home</Link>
             {questions.map((currentQuestion: any, index: number) => {
                 return (
                     <div key={index}>

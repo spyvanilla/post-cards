@@ -1,0 +1,31 @@
+#questions-card {
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 24px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    max-width: 984px;
+}
+
+#questions-card h2 {
+    white-space: pre-wrap;
+    font-size: 20px;
+}
+
+#questions-card button {
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(224, 224, 22);
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    transition: linear 0.1s;
+}

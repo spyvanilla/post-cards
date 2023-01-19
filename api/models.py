@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False)
     question = db.Column(db.String, nullable=False)
     subject = db.Column(db.String, nullable=False)
     answer = db.Column(db.String, nullable=False)
