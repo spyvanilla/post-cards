@@ -12,3 +12,4 @@ class Question(db.Model):
     question = db.Column(db.String, nullable=False)
     subject = db.Column(db.String, nullable=False)
     answer = db.Column(db.String, nullable=False)
+    image = db.Column(db.Text)

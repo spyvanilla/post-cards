@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Loading from './Components/Loading';
-import {Home, Register, Login, Profile, Questions, EditQuestions, EditQuestion} from './Pages';
+import {Home, Register, Login, Profile, Questions, EditQuestions} from './Pages';
 
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,7 +31,6 @@ function App() {
           <Route path="/profile" element={<Profile isLogged={isLogged} setIsLogged={setIsLogged} />}></Route>
           <Route path="/questions/:subject" element={<Questions />}></Route>
           <Route path="/edit-questions/:subject" element={<EditQuestions />}></Route>
-          <Route path="/edit-questions/:subject/:id" element={<EditQuestion />}></Route>
         </Routes>
       )}
     </Router>

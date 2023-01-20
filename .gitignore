@@ -1,6 +1,10 @@
 # Private credentials
 credentials.json
 
+# ignore images uploaded to the server
+images/*
+!images/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

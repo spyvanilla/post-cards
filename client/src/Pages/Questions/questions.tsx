@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import {SyntheticEvent} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 
+import Loading from '../../Components/Loading';
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBook, faCheck} from '@fortawesome/free-solid-svg-icons';
 
@@ -53,12 +55,13 @@ function Questions() {
 
     return (
         <>
-        {loading === true ? '' : (
+        {loading === true ? <Loading type={1} /> : (
             <div className="questions-card">
                 <h4><FontAwesomeIcon icon={faBook} /> {subject}</h4>
                 {showAnswer === false ? (
                     <>
                     <h2>{currentQuestion.question}</h2>
+                    {currentQuestion.image !== undefined ? <img src={`/api/get-question-image-by-id/${currentQuestion.id}`} alt={currentQuestion.image}></img> : ''}
                     <form onSubmit={handleSubmit}>
                         <button type="submit">Show answer</button>
                     </form>

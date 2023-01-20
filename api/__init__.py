@@ -16,6 +16,8 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = SECRET_KEY
+    app.config['UPLOAD_FOLDER'] = 'api/images'
+
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

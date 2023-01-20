@@ -26,12 +26,29 @@
     animation-fill-mode: forwards;
 }
 
+#center-submit-sections {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+#question-submit-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-description {
+    font-size: 20px;
+    text-align: center;
+}
+
 #profile-title-card-center {
     position: relative;
     transform: translateY(20px);
     height: 80px;
     margin-top: -30px;
-    margin-bottom: -30px;
+    margin-bottom: -20px;
 }
 
 .profile-title-card {
@@ -45,15 +62,6 @@
 #profile-title-card-2 {
     transform: translateY(-80px);
     animation: registerCardAnimation 1s;
-    animation-delay: 400ms;
-    animation-fill-mode: forwards;
-}
-
-.profile-description {
-    opacity: 0;
-    font-size: 20px;
-    text-align: center;
-    animation: titleAppear 1s;
     animation-delay: 400ms;
     animation-fill-mode: forwards;
 }

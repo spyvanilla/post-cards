@@ -5,6 +5,8 @@ import {useNavigate, useParams} from 'react-router-dom';
 import Loading from '../../Components/Loading';
 import QuestionCardEdit from '../../Components/QuestionCardEdit';
 
+import {ToastContainer} from 'react-toastify';
+
 function EditQuestions() {
     const [questions, setQuestions] = useState<any>([]);
     const [loading, setLoading] = useState(true);
@@ -32,6 +34,7 @@ function EditQuestions() {
             })}
             </>
         )}
+        <ToastContainer position={"top-left"} />
         </>
     )
 }

@@ -45,27 +45,31 @@ function Subjects() {
 
     return (
         <>
-        {loading === true ? <></> : (
+        {loading === true ? '' : (
             <>
             {availableSubjects.length === 0 ? <></> : (
-                <>
-                <h2 className="profile-description">Answer your questions</h2>
-                <section className="question-submit-card" style={{alignItems: "center"}}>
-                    <label htmlFor="subject">Select a subject <FontAwesomeIcon icon={faBook} /></label>
-                    <div>
-                        <select name="subject" id="subject" value={selectedSubject} onChange={(event) => setSelectedSubject(event.target.value)}>
-                        {availableSubjects.map((subject: any, index: number) => {
-                            return (
-                                <option value={subject.subject} key={index}>{subject.subject.charAt(0).toUpperCase() + subject.subject.slice(1)}</option>
-                            )
-                        })}
-                        </select>
-                        <FontAwesomeIcon icon={faChevronDown} id="select-icon" />
+                <section id="question-submit-section">
+                    <h2 className="profile-description" style={{marginBottom: "25px"}}>Answer your questions</h2>
+                    <div id="profile-title-card-center">
+                        <div className="profile-title-card" id="profile-title-card-1"></div>
+                        <div className="profile-title-card" id="profile-title-card-2"></div>
                     </div>
-                    <button onClick={startGame}>Start</button>
-                    <button onClick={editQuestions}>Edit questions</button>
+                    <section className="question-submit-card" style={{alignItems: "center"}}>
+                        <label htmlFor="subject">Select a subject <FontAwesomeIcon icon={faBook} /></label>
+                        <div>
+                            <select name="subject" id="subject" value={selectedSubject} onChange={(event) => setSelectedSubject(event.target.value)}>
+                            {availableSubjects.map((subject: any, index: number) => {
+                                return (
+                                    <option value={subject.subject} key={index}>{subject.subject.charAt(0).toUpperCase() + subject.subject.slice(1)}</option>
+                                )
+                            })}
+                            </select>
+                            <FontAwesomeIcon icon={faChevronDown} id="select-icon" />
+                        </div>
+                        <button onClick={startGame}>Start</button>
+                        <button onClick={editQuestions}>Edit questions</button>
+                    </section>
                 </section>
-                </>
             )}
             </>
         )}
