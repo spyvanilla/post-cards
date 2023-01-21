@@ -13,7 +13,7 @@ with open('credentials.json', 'r') as f:
     DATABASE_URL = data['DATABASE_URL']
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='./../client/build', static_url_path='')
 
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['UPLOAD_FOLDER'] = 'api/images'
