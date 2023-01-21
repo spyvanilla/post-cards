@@ -14,7 +14,7 @@
 
 .title-card {
     width: 200px;
-    height: 300px;
+    height: 200px;
     background-color: rgb(224, 224, 22);
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -67,7 +67,7 @@
 
 @keyframes cardAnimation {
     100% {
-        transform: rotate(20deg) translateY(-300px);
+        transform: rotate(10deg) translateY(-300px);
     }
 }
 

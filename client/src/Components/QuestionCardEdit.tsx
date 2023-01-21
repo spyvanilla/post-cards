@@ -54,7 +54,7 @@ function QuestionCardEdit({index, subject, currentQuestion, setLoading} : {index
     return (
         <>
         {editMode === true ? (
-            <form className="questions-card" style={{width: "984px"}} onSubmit={(event) => editQuestion(event, currentQuestion.id)} key={index}>
+            <form className="questions-card" onSubmit={(event) => editQuestion(event, currentQuestion.id)} key={index}>
                 <label htmlFor="file" style={{cursor: "pointer"}}>
                 <p>{image === undefined ? "Add your image" : "Change your image"} <FontAwesomeIcon icon={faImage} /></p>
                 </label>

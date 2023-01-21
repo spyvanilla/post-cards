@@ -92,6 +92,6 @@
 
 @keyframes registerCardAnimation {
     100% {
-        transform: rotate(20deg) translateY(-80px);
+        transform: rotate(10deg) translateY(-80px);
     }
 }
