@@ -1,6 +1,3 @@
-# Private credentials
-credentials.json
-
 # ignore images uploaded to the server
 images/*
 !images/.gitkeep

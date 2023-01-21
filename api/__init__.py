@@ -1,4 +1,5 @@
-import json
+from os import getenv
+from dotenv import load_dotenv
 
 from flask import Flask
 from flask_login import LoginManager
@@ -7,10 +8,9 @@ from flask_cors import CORS
 
 db = SQLAlchemy()
 
-with open('credentials.json', 'r') as f:
-    data = json.load(f)
-    SECRET_KEY = data['SECRET_KEY']
-    DATABASE_URL = data['DATABASE_URL']
+load_dotenv()
+SECRET_KEY = getenv('SECRET_KEY')
+DATABASE_URL = getenv('DATABASE_URL')
 
 def create_app():
     app = Flask(__name__, static_folder='./../client/build', static_url_path='')
