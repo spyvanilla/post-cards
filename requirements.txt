@@ -5,4 +5,4 @@ Flask-Cors==3.0.10
 Python-Dotenv==0.21.1
 psycopg2-binary==2.9.5
 gunicorn==20.1.0
-flask-googlestorage==0.1.2
+google-cloud-storage==2.7.0

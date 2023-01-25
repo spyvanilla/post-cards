@@ -16,18 +16,19 @@ SECRET_KEY = getenv('SECRET_KEY')
 DATABASE_URL = getenv('DATABASE_URL')
 STORAGE_BUCKET_NAME = getenv('STORAGE_BUCKET_NAME')
 
+# Setup for google cloud storage
 storage_client = storage.Client()
 bucket = storage_client.bucket(STORAGE_BUCKET_NAME)
 
 def storage_write_file(image):
+    # Responsible for uploading images in google cloud storage
     blob = bucket.blob(image.filename)
     blob.upload_from_string(image.read(), content_type=image.content_type)
     blob.make_public()
     return blob.name
 
 def storage_find_file(blob_name):
-    storage_client = storage.Client()
-
+    # Responsible for finding a specific image in google cloud storage
     for blob in storage_client.list_blobs(STORAGE_BUCKET_NAME):
         if blob.name == blob_name:
             return blob.public_url
@@ -37,6 +38,7 @@ def storage_delete_file(blob_name):
     blob.delete()
 
 def create_app():
+    # This app uses factories pattern, more info here: https://flask.palletsprojects.com/en/2.2.x/patterns/appfactories/
     app = Flask(__name__, static_folder='./../client/build', static_url_path='')
 
     app.config['SECRET_KEY'] = SECRET_KEY

@@ -57,6 +57,7 @@ def get_questions_from_subject(subject: str):
     questions = Question.query.filter_by(user_id=current_user.id, subject=subject).all()
 
     if questions:
+        # Sample shuffles the questions to make the order random
         return jsonify([*map(serialize_questions, sample(questions, len(questions)))])
     return jsonify([])
 
@@ -91,6 +92,7 @@ def edit_question(id: int):
     edited_question = Question.query.filter_by(id=id).first()
 
     if edited_question:
+        # Checks if the user that made the request has permission
         if edited_question.user_id != current_user.id:
             return {'edit': False}
 
@@ -114,6 +116,7 @@ def delete_question(id: int):
     question = Question.query.filter_by(id=id).first()
 
     if question:
+        # Checks if the user that made the request has permission
         if question.user_id != current_user.id:
             return {'delete': False}
 
@@ -128,6 +131,7 @@ def delete_question(id: int):
 def delete_question_image(id: int):
     question = Question.query.filter_by(id=id).first()
 
+    # Checks if the user that made the request has permission
     if question.user_id != current_user.id:
         return {'delete': False}
 
