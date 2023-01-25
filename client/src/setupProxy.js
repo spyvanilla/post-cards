@@ -4,7 +4,7 @@ export default function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: "https://nomadic-bedrock-375716.ue.r.appspot.com",
+      target: "http://127.0.0.1:5000",
       changeOrigin: true,
     })
   );

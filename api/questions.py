@@ -1,12 +1,10 @@
-import os
 from random import sample
 
-from flask import Blueprint, request, jsonify, send_file
+from flask import Blueprint, request, jsonify, redirect
 from flask_login import current_user
 from flask_cors import cross_origin
-from werkzeug.utils import secure_filename
 
-from . import db
+from . import db, storage_write_file, storage_find_file, storage_delete_file
 from .models import Question
 
 questions = Blueprint('questions', __name__)
@@ -36,8 +34,7 @@ def submit_question():
     image = request.files.get('image')
 
     if image:
-        filename = secure_filename(image.filename)
-        image.save(os.path.join('api/images', filename))
+        filename = storage_write_file(image)
 
     new_question = Question(user_id=current_user.id, question=question, subject=subject, answer=answer, image=filename) if image else Question(user_id=current_user.id, question=question, subject=subject, answer=answer)
     db.session.add(new_question)
@@ -79,7 +76,8 @@ def get_question_by_id(id: int):
 @cross_origin()
 def get_question_image_by_id(id: int):
     image = Question.query.filter_by(id=id).first().image
-    return send_file(f'images/{image}')
+    public_url = storage_find_file(image)
+    return redirect(public_url)
 
 @questions.route('/edit-question/<int:id>', methods=['POST'], endpoint='edit_question')
 @cross_origin()
@@ -98,10 +96,9 @@ def edit_question(id: int):
 
         if image:
             if edited_question.image:
-                os.remove(f'api/images/{edited_question.image}')
+                storage_delete_file(edited_question.image)
 
-            filename = secure_filename(image.filename)
-            image.save(os.path.join('api/images', filename))
+            filename = storage_write_file(image)
             edited_question.image = filename
 
         edited_question.subject = subject
@@ -121,7 +118,7 @@ def delete_question(id: int):
             return {'delete': False}
 
         if question.image:
-            os.remove(f'api/images/{question.image}')
+            storage_delete_file(question.image)
 
         db.session.delete(question)
         db.session.commit()
@@ -135,7 +132,7 @@ def delete_question_image(id: int):
         return {'delete': False}
 
     if question.image:
-        os.remove(f'api/images/{question.image}')
+        storage_delete_file(question.image)
 
     question.image = None
     db.session.commit()

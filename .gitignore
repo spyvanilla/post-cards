@@ -1,6 +1,5 @@
-# ignore images uploaded to the server
-images/*
-!images/.gitkeep
+# Google Cloud Credentials
+application_default_credentials.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

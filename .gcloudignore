@@ -13,8 +13,8 @@
 .git
 .gitignore
 
-# Isn't part of api
-client/
+# React libs
+node_modules/
 # Python pycache:
 __pycache__/
 # Ignored by the build system

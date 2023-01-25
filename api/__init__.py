@@ -1,22 +1,46 @@
-from os import getenv
+from os import getenv, environ
 from dotenv import load_dotenv
 
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from google.cloud import storage
+
+environ['GCLOUD_PROJECT'] = 'my-project-1234'
 
 db = SQLAlchemy()
 
 load_dotenv()
 SECRET_KEY = getenv('SECRET_KEY')
 DATABASE_URL = getenv('DATABASE_URL')
+STORAGE_BUCKET_NAME = getenv('STORAGE_BUCKET_NAME')
+
+storage_client = storage.Client()
+bucket = storage_client.bucket(STORAGE_BUCKET_NAME)
+
+def storage_write_file(image):
+    blob = bucket.blob(image.filename)
+    blob.upload_from_string(image.read(), content_type=image.content_type)
+    blob.make_public()
+    return blob.name
+
+def storage_find_file(blob_name):
+    storage_client = storage.Client()
+
+    for blob in storage_client.list_blobs(STORAGE_BUCKET_NAME):
+        if blob.name == blob_name:
+            return blob.public_url
+
+def storage_delete_file(blob_name):
+    blob = bucket.blob(blob_name)
+    blob.delete()
 
 def create_app():
     app = Flask(__name__, static_folder='./../client/build', static_url_path='')
 
     app.config['SECRET_KEY'] = SECRET_KEY
-    app.config['UPLOAD_FOLDER'] = 'api/images'
+    app.config['UPLOAD_FOLDER'] = 'api'
 
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
