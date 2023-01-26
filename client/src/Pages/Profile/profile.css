@@ -125,4 +125,7 @@
         flex-direction: column;
         gap: 50px;
     }
+    #first-section {
+        order: 2;
+    }
 }
