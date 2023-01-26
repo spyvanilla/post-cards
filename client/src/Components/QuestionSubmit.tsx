@@ -15,7 +15,7 @@ function QuestionSubmit({setUnloadSubjectsComponent} : {setUnloadSubjectsCompone
 
     return (
         <>
-        <section id="question-submit-section" className="first-section">
+        <section className="question-submit-section" id="first-section">
             <h2 className="profile-description" style={{marginBottom: "25px"}}>Submit a question</h2>
             <div id="profile-title-card-center">
                 <div className="profile-title-card" id="profile-title-card-1"></div>

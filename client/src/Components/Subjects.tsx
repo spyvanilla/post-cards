@@ -48,7 +48,7 @@ function Subjects() {
         {loading === true ? '' : (
             <>
             {availableSubjects.length === 0 ? <></> : (
-                <section id="question-submit-section">
+                <section className="question-submit-section">
                     <h2 className="profile-description" style={{marginBottom: "25px"}}>Answer your questions</h2>
                     <div id="profile-title-card-center">
                         <div className="profile-title-card" id="profile-title-card-1"></div>
