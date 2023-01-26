@@ -1,3 +1,4 @@
+import uuid
 from os import getenv, environ
 from dotenv import load_dotenv
 
@@ -22,7 +23,7 @@ bucket = storage_client.bucket(STORAGE_BUCKET_NAME)
 
 def storage_write_file(image):
     # Responsible for uploading images in google cloud storage
-    blob = bucket.blob(image.filename)
+    blob = bucket.blob(uuid.uuid4().hex)
     blob.upload_from_string(image.read(), content_type=image.content_type)
     blob.make_public()
     return blob.name
