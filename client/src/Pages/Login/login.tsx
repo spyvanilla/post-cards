@@ -1,17 +1,17 @@
-import React from 'react';
-import {useState} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import React from 'react'
+import {useState} from 'react'
+import {useNavigate, Link} from 'react-router-dom'
 
-import loginUser from '../../Helpers/loginUser';
+import loginUser from '../../Helpers/loginUser'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignature, faLock} from '@fortawesome/free-solid-svg-icons';
-import {ToastContainer} from 'react-toastify';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSignature, faLock} from '@fortawesome/free-solid-svg-icons'
+import {ToastContainer} from 'react-toastify'
 
 function Login({setIsLogged} : {setIsLogged: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
     return (
         <>
@@ -35,4 +35,4 @@ function Login({setIsLogged} : {setIsLogged: React.Dispatch<React.SetStateAction
     )
 }
 
-export default Login;
+export default Login

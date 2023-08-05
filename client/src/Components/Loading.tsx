@@ -1,7 +1,5 @@
-import React from 'react';
-
-import GridLoader from 'react-spinners/GridLoader';
-import SyncLoader from 'react-spinners/SyncLoader';
+import GridLoader from 'react-spinners/GridLoader'
+import SyncLoader from 'react-spinners/SyncLoader'
 
 function Loading({type} : {type: number}) {
     // type 1 - Page loading
@@ -21,4 +19,4 @@ function Loading({type} : {type: number}) {
     )
 }
 
-export default Loading;
+export default Loading

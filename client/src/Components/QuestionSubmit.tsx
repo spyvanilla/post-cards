@@ -1,17 +1,16 @@
-import React from 'react';
-import {useState} from 'react';
+import {useState} from 'react'
 
-import submitUserQuestion from '../Helpers/submitUserQuestion';
-import addImage from '../Helpers/addImage';
+import submitUserQuestion from '../Helpers/submitUserQuestion'
+import addImage from '../Helpers/addImage'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBook, faCircleQuestion, faCheck, faImage} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBook, faCircleQuestion, faCheck, faImage} from '@fortawesome/free-solid-svg-icons'
 
 function QuestionSubmit({setUnloadSubjectsComponent} : {setUnloadSubjectsComponent: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const [subject, setSubject] = useState('');
-    const [question, setQuestion] = useState('');
-    const [answer, setAnswer] = useState('');
-    const [image, setImage] = useState<any>(null);
+    const [subject, setSubject] = useState('')
+    const [question, setQuestion] = useState('')
+    const [answer, setAnswer] = useState('')
+    const [image, setImage] = useState<any>(null)
 
     return (
         <>
@@ -39,4 +38,4 @@ function QuestionSubmit({setUnloadSubjectsComponent} : {setUnloadSubjectsCompone
     )
 }
 
-export default QuestionSubmit;
+export default QuestionSubmit

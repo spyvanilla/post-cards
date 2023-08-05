@@ -1,15 +1,14 @@
-import React from 'react';
-import {useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
-import './home.css';
+import './home.css'
 
 function Home(isLogged : {isLogged: boolean}) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (!isLogged) {
-            return navigate('/profile');
+            return navigate('/profile')
         }
     }, [isLogged, navigate])
 
@@ -26,4 +25,4 @@ function Home(isLogged : {isLogged: boolean}) {
     )
 }
 
-export default Home;
+export default Home

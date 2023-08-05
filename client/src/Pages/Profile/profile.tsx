@@ -1,27 +1,27 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import {SyntheticEvent} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React from 'react'
+import {useState, useEffect} from 'react'
+import {SyntheticEvent} from 'react'
+import {useNavigate} from 'react-router-dom'
 
-import Loading from '../../Components/Loading';
-import QuestionSubmit from '../../Components/QuestionSubmit';
-import Subjects from '../../Components/Subjects';
+import Loading from '../../Components/Loading'
+import QuestionSubmit from '../../Components/QuestionSubmit'
+import Subjects from '../../Components/Subjects'
 
-import {ToastContainer} from 'react-toastify';
+import {ToastContainer} from 'react-toastify'
 
-import './profile.css';
+import './profile.css'
 
 function Profile({isLogged, setIsLogged} : {isLogged: boolean, setIsLogged: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const [username, setUsername] = useState('');
-    const [unloadSubjectsComponent, setUnloadSubjectsComponent] = useState(false);
+    const [username, setUsername] = useState('')
+    const [unloadSubjectsComponent, setUnloadSubjectsComponent] = useState(false)
     // When a new question is submitted, the Subjects
     // component is unloaded and reloaded to refresh data
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
     const onClick = (event: SyntheticEvent) => {
-        event.preventDefault();
-        setLoading(true);
+        event.preventDefault()
+        setLoading(true)
 
         fetch('/api/logout')
         .then(() => setIsLogged(false))
@@ -29,14 +29,14 @@ function Profile({isLogged, setIsLogged} : {isLogged: boolean, setIsLogged: Reac
 
     useEffect(() => {
         if (!isLogged) {
-            return navigate('/');
+            return navigate('/')
         }
         else {
             fetch('/api/get-username')
             .then(response => response.json())
             .then(response => {
-                setUsername(response.username);
-                setLoading(false);
+                setUsername(response.username)
+                setLoading(false)
             })
         }
     }, [isLogged, navigate])
@@ -60,4 +60,4 @@ function Profile({isLogged, setIsLogged} : {isLogged: boolean, setIsLogged: Reac
     )
 }
 
-export default Profile;
+export default Profile

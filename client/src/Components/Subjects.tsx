@@ -1,47 +1,46 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useState, useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBook, faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBook, faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
 function Subjects() {
-    const [availableSubjects, setAvailableSubjects] = useState<any>([]);
-    const [selectedSubject, setSelectedSubject] = useState('');
-    const [start, setStart] = useState(false); // Redirects to questions page
-    const [edit, setEdit] = useState(false); // Redirects to edit questions page
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    const [availableSubjects, setAvailableSubjects] = useState<any>([])
+    const [selectedSubject, setSelectedSubject] = useState('')
+    const [start, setStart] = useState(false) // Redirects to questions page
+    const [edit, setEdit] = useState(false) // Redirects to edit questions page
+    const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
     const startGame = () => {
-        if (selectedSubject.length > 0) setStart(true);
+        if (selectedSubject.length > 0) setStart(true)
     }
 
     const editQuestions = () => {
-        if (selectedSubject.length > 0) setEdit(true);
+        if (selectedSubject.length > 0) setEdit(true)
     }
 
     useEffect(() => {
         fetch('/api/get-subjects')
         .then(response => response.json())
         .then(data => {
-            setAvailableSubjects(data);
+            setAvailableSubjects(data)
             
             if (data.length > 0) {
-                setSelectedSubject(data[0].subject);
+                setSelectedSubject(data[0].subject)
             }
-            setLoading(false);
+            setLoading(false)
         })
-    }, [navigate]);
+    }, [navigate])
 
     useEffect(() => {
         if (start) {
-            return navigate(`/questions/${selectedSubject}`);
+            return navigate(`/questions/${selectedSubject}`)
         }
         if (edit) {
-            return navigate(`/edit-questions/${selectedSubject}`);
+            return navigate(`/edit-questions/${selectedSubject}`)
         }
-    }, [selectedSubject, start, edit, navigate]);
+    }, [selectedSubject, start, edit, navigate])
 
     return (
         <>
@@ -77,4 +76,4 @@ function Subjects() {
     )
 }
 
-export default Subjects;
+export default Subjects

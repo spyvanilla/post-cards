@@ -31,7 +31,7 @@ def register():
             'error': 'Username already exists'
         }
 
-    hashed_password = generate_password_hash(password, method='sha256')
+    hashed_password = generate_password_hash(password, method='scrypt')
     new_user = User(username=username, password=hashed_password)
     db.session.add(new_user)
     db.session.commit()

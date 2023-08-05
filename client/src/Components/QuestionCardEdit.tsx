@@ -1,31 +1,31 @@
-import React from 'react';
-import {useState} from 'react';
-import {SyntheticEvent} from 'react';
+import React from 'react'
+import {useState} from 'react'
+import {SyntheticEvent} from 'react'
 
-import addImage from '../Helpers/addImage';
+import addImage from '../Helpers/addImage'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faImage, faBook, faCheck, faCircleQuestion} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faImage, faBook, faCheck, faCircleQuestion} from '@fortawesome/free-solid-svg-icons'
 
 function QuestionCardEdit({index, subject, currentQuestion, setLoading} : {index: number, subject: string | undefined, currentQuestion: any, setLoading: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const [image, setImage] = useState<any>(currentQuestion.image);
-    const [currentSubject, setCurrentSubject] = useState<string | undefined>(subject);
-    const [question, setQuestion] = useState<string>(currentQuestion.question);
-    const [answer, setAnswer] = useState<string>(currentQuestion.answer);
-    const [editMode, setEditMode] = useState(false);
+    const [image, setImage] = useState<any>(currentQuestion.image)
+    const [currentSubject, setCurrentSubject] = useState<string | undefined>(subject)
+    const [question, setQuestion] = useState<string>(currentQuestion.question)
+    const [answer, setAnswer] = useState<string>(currentQuestion.answer)
+    const [editMode, setEditMode] = useState(false)
 
     const editQuestion = (event: SyntheticEvent, id: number) => {
-        event.preventDefault();
+        event.preventDefault()
 
         if (currentSubject === undefined) {
-            return;
+            return
         }
 
-        const formData = new FormData();
-        formData.append('subject', currentSubject);
-        formData.append('question', question);
-        formData.append('answer', answer);
-        formData.append('image', image);
+        const formData = new FormData()
+        formData.append('subject', currentSubject)
+        formData.append('question', question)
+        formData.append('answer', answer)
+        formData.append('image', image)
 
         fetch(`/api/edit-question/${id}`, {
             method: 'POST',
@@ -35,7 +35,7 @@ function QuestionCardEdit({index, subject, currentQuestion, setLoading} : {index
     }
 
     const deleteQuestion = (id: number) => {
-        setLoading(true);
+        setLoading(true)
 
         fetch(`/api/delete-question/${id}`, {method: 'DELETE'})
         .then(() => window.location.reload())
@@ -47,7 +47,7 @@ function QuestionCardEdit({index, subject, currentQuestion, setLoading} : {index
             .then(() => setImage(undefined))
         }
         else {
-            setImage(undefined);
+            setImage(undefined)
         }
     }
 
@@ -83,4 +83,4 @@ function QuestionCardEdit({index, subject, currentQuestion, setLoading} : {index
     )
 }
 
-export default QuestionCardEdit;
+export default QuestionCardEdit

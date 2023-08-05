@@ -1,23 +1,22 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {useState, useEffect} from 'react'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
-import Loading from './Components/Loading';
-import {Home, Register, Login, Profile, Questions, EditQuestions} from './Pages';
+import Loading from './Components/Loading'
+import {Home, Register, Login, Profile, Questions, EditQuestions} from './Pages'
 
-import './App.css';
-import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [isLogged, setIsLogged] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/is_logged')
     .then(response => response.json())
     .then(response => {
-      setIsLogged(response.is_logged);
-      setLoading(false);
+      setIsLogged(response.is_logged)
+      setLoading(false)
     })
   }, [])
 
@@ -34,7 +33,7 @@ function App() {
         </Routes>
       )}
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

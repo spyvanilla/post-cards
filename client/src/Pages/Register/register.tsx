@@ -1,20 +1,19 @@
-import React from 'react';
-import {useState} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import {useState} from 'react'
+import {useNavigate, Link} from 'react-router-dom'
 
-import registerUser from '../../Helpers/registerUser';
+import registerUser from '../../Helpers/registerUser'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faSignature, faLock, faCheck} from '@fortawesome/free-solid-svg-icons';
-import {ToastContainer} from 'react-toastify';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSignature, faLock, faCheck} from '@fortawesome/free-solid-svg-icons'
+import {ToastContainer} from 'react-toastify'
 
-import './register.css';
+import './register.css'
 
 function Register() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const navigate = useNavigate()
 
     return (
         <>
@@ -40,4 +39,4 @@ function Register() {
     )
 }
 
-export default Register;
+export default Register
