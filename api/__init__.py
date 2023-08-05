@@ -40,7 +40,7 @@ def storage_delete_file(blob_name):
 
 def create_app():
     # This app uses factories pattern, more info here: https://flask.palletsprojects.com/en/2.2.x/patterns/appfactories/
-    app = Flask(__name__, static_folder='./../client/build', static_url_path='')
+    app = Flask(__name__, static_folder='../client/dist', static_url_path='')
 
     app.config['SECRET_KEY'] = SECRET_KEY
     app.config['UPLOAD_FOLDER'] = 'api'
