@@ -7,4 +7,4 @@ To run the app locally, create an account and a new project in Google Cloud and 
 - ```STORAGE_BUCKET_NAME``` - The name of the Google Cloud Storage
 - ```GOOGLE_APPLICATION_CREDENTIALS``` - ```application_default_credentials.json```
 
-Install all the api dependencies in the ```requirements.txt``` file and run the api with ```python main.py``` command, then go to the ```client``` directory with ```cd client``` command, after that, install the client dependencies with ```npm install``` command. To run the client, type ```npm start```
+Install all the api dependencies in the ```requirements.txt``` file and run the api with ```python main.py``` command, then go to the ```client``` directory with ```cd client``` command, after that, install the client dependencies with ```npm install``` command. To run the client, type ```npm run dev```
